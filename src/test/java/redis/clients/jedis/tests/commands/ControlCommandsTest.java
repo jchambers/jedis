@@ -198,4 +198,14 @@ public class ControlCommandsTest extends JedisCommandTestBase {
     byte[] memoryInfo = jedis.memoryDoctorBinary();
     assertNotNull(memoryInfo);
   }
+
+  @Test
+  public void memoryUsage() {
+    assertTrue(jedis.memoryUsage("") > 0);
+  }
+
+  @Test
+  public void memoryUsageSamples() {
+    assertTrue(jedis.memoryUsage("", 0) > 0);
+  }
 }

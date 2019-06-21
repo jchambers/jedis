@@ -3660,7 +3660,21 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
     client.memoryDoctor();
     return client.getBulkReply();
   }
-      
+
+  @Override
+  public Long memoryUsage(final String key) {
+    checkIsInMultiOrPipeline();
+    client.memoryUsage(key);
+    return client.getIntegerReply();
+  }
+
+  @Override
+  public Long memoryUsage(final String key, final int samples) {
+    checkIsInMultiOrPipeline();
+    client.memoryUsage(key, samples);
+    return client.getIntegerReply();
+  }
+
   @Override
   public StreamEntryID xadd(final String key, final StreamEntryID id, final Map<String, String> hash) {
     return xadd(key, id, hash, Long.MAX_VALUE, false);

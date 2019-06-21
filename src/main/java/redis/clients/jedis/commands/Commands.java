@@ -361,8 +361,13 @@ public interface Commands {
 
   void memoryDoctor();
 
-  void xadd(String key, StreamEntryID id, Map<String, String> hash, long maxLen, boolean approximateLength);
-  
+  void memoryUsage(String key);
+
+  void memoryUsage(String key, int samples);
+
+  void xadd(String key, StreamEntryID id, Map<String, String> hash, long maxLen,
+      boolean approximateLength);
+
   void xlen(String key);
 
   void xrange(String key, StreamEntryID start, StreamEntryID end, long count);

@@ -1027,6 +1027,14 @@ public class BinaryClient extends Connection {
     sendCommand(MEMORY, Keyword.DOCTOR.raw);
   }
 
+  public void memoryUsage(final byte[] key) {
+    sendCommand(MEMORY, Keyword.USAGE.raw, key);
+  }
+
+  public void memoryUsage(final byte[] key, int samples) {
+    sendCommand(MEMORY, Keyword.USAGE.raw, key, Protocol.toByteArray(samples));
+  }
+
   public void clientKill(final byte[] ipPort) {
     sendCommand(CLIENT, Keyword.KILL.raw, ipPort);
   }

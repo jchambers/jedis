@@ -388,6 +388,16 @@ public class Client extends BinaryClient implements Commands {
   }
 
   @Override
+  public void memoryUsage(final String key) {
+    memoryUsage(SafeEncoder.encode(key));
+  }
+
+  @Override
+  public void memoryUsage(final String key, final int samples) {
+    memoryUsage(SafeEncoder.encode(key), samples);
+  }
+
+  @Override
   public void zadd(final String key, final double score, final String member) {
     zadd(SafeEncoder.encode(key), score, SafeEncoder.encode(member));
   }
